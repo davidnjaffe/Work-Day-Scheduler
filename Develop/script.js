@@ -17,12 +17,46 @@
 
 // WHEN I refresh the page
 // THEN the saved events persist
+//=======================================================================
 
 // console.log(moment().format('LLLL'));
 
 
+//====== sets current day + time  =============
+$("#currentDay").text(moment().format('LLLL'));
 
-    $("#currentDay").text(moment().format('LLLL'));
+
+
+
+//======   change background color dependent of current time   ============
+
+// var currentTime = moment().format('LLLL');
+
+// console.log(currentTime);
+console.log(moment().format('LT'));
+var currentTime = moment().hours();
+// console.log(currentHour)
+
+
+function changeBackground() {
+    $(".timeBlock").each(function () {
+        var blockTime = parseInt($(this).data('block'));
+        console.log(blockTime)
+        
+
+        if (blockTime < currentTime) {
+            $(this).find('.text-block').removeClass('present future').addClass('past');
+
+        } else if (blockTime === currentTime) {
+            $(this).find('.text-block').removeClass('past future').addClass('present');
+
+        } else if (blockTime > currentTime) {
+            $(this).find('.text-block').removeClass('past present').addClass('future');
+        }
+    });
+};
+changeBackground();
+
 
 
 
