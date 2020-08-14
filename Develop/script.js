@@ -19,44 +19,68 @@
 // THEN the saved events persist
 //=======================================================================
 
+
+
+$(document).ready(function () {
+
+//====== sets current day + time  =============
+$("#currentDay").text(moment().format("LLLL"));
 // console.log(moment().format('LLLL'));
 
 
-//====== sets current day + time  =============
-$("#currentDay").text(moment().format('LLLL'));
+// ======== retrieve data from local storage ==============
 
+$('[data-block="8"]').find("textArea").val(localStorage.getItem("8"));
+$('[data-block="9"]').find("textArea").val(localStorage.getItem("9"));
+$('[data-block="10"]').find("textArea").val(localStorage.getItem("10"));
+$('[data-block="11"]').find("textArea").val(localStorage.getItem("11"));
+$('[data-block="12"]').find("textArea").val(localStorage.getItem("12"));
+$('[data-block="13"]').find("textArea").val(localStorage.getItem("13"));
+$('[data-block="14"]').find("textArea").val(localStorage.getItem("14"));
+$('[data-block="15"]').find("textArea").val(localStorage.getItem("15"));
+$('[data-block="16"]').find("textArea").val(localStorage.getItem("16"));
+$('[data-block="17"]').find("textArea").val(localStorage.getItem("17"));
 
 
 
 //======   change background color dependent of current time   ============
 
-// var currentTime = moment().format('LLLL');
 
-// console.log(currentTime);
-console.log(moment().format('LT'));
+
+
+console.log(moment().format("LT"));
 var currentTime = moment().hours();
-// console.log(currentHour)
+// console.log(currentHour);
+// console.log(currentTime);
 
 
-function changeBackground() {
+
     $(".timeBlock").each(function () {
-        var blockTime = parseInt($(this).data('block'));
-        console.log(blockTime)
+        var timeBlockEl = parseInt($(this).data("block"));
+        console.log(timeBlockEl)
         
 
-        if (blockTime < currentTime) {
-            $(this).find('.text-block').removeClass('present future').addClass('past');
+        if (timeBlockEl < currentTime) {
+            $(this).find(".text-block").removeClass("present future").addClass("past");
 
-        } else if (blockTime === currentTime) {
-            $(this).find('.text-block').removeClass('past future').addClass('present');
+        } else if (timeBlockEl === currentTime) {
+            $(this).find(".text-block").removeClass("past future").addClass("present");
 
-        } else if (blockTime > currentTime) {
-            $(this).find('.text-block').removeClass('past present').addClass('future');
+        } else if (timeBlockEl > currentTime) {
+            $(this).find(".text-block").removeClass("past present").addClass("future");
         }
     });
-};
-changeBackground();
+    
+
+//==== save values to local storage using saveBtn ====
+
+$(".saveBtn").on("click", function() {
+console.log("save button clicked")
+var key = $(this).parent().data("block");
+var value = $(this).parent().find(".textArea").val();
+localStorage.setItem(key, value);
+    
+});
 
 
-
-
+});

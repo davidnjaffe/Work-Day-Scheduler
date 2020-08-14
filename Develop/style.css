@@ -6,9 +6,8 @@ body {
 
 textarea{
   background: transparent;
-  border: 1px solid black;
   resize:none;
-  color: #000000;
+  /* color: #000000; */
   border-left: 1px solid black;
   padding: 10px;
   width: 100%;
@@ -16,14 +15,16 @@ textarea{
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  background-color: gray;
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
 }
 
 #currentDay{
-  color: #06AED5;
+  color: #FFF;
+  font-size: 30px;
+  padding-top: 20px;
 }
 
 
@@ -33,7 +34,9 @@ textarea{
 
 .time-block{
   text-align: center;
-  border-radius: 15px;
+  /* border-radius: 15px; */
+  background-color: #f9c451;
+  
   
 }
 
@@ -46,8 +49,11 @@ textarea{
 }
 
 .hour {
-  background-color: #ffffff;
+  background-color: #f9c451;
   color: #000000;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
   /* border-top: 1px dashed #000000; */
 }
 
@@ -77,13 +83,15 @@ textarea{
 }
 
 .saveBtn i:hover {
-  font-size: 20px;
+  font-size: 40px;
   transition: all .3s ease-in-out;
+  color: #f9c451;
 }
 
 .text-block{
   border: 1px solid black;
   margin: 0px;
   align-items: center;
+  color: #000000;
   
 }
